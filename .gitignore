@@ -1,0 +1,43 @@
+# Build outputs
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Test results
+TestResults/
+*.trx
+*.xml
+
+# Reports — HTML keep pannalam, Videos skip
+Reports/Videos/
+Reports/*.png
+
+# ChromeDriver downloads
+chromedriver.zip
+chromedriver-win64/
+chromedriver.exe
+
+# Allure
+allure-results/
+allure-report/
+
+# Environment / secrets
+appsettings.local.json
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# NuGet
+*.nupkg
+.nuget/
+
+# Logs
+*.log
