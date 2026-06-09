@@ -32,12 +32,9 @@ jobs:
       - name: Verify build artifacts
         run: |
           echo "Build successful!"
-          echo "Framework files present:"
           dir Features\
           dir Steps\
-          dir Hooks\
           dir Utilities\
-          dir Pages\
 
       - name: Upload Build Summary
         uses: actions/upload-artifact@v4
@@ -47,3 +44,28 @@ jobs:
           path: |
             SpecFlowDemo.csproj
             Features/
+
+  test:
+    name: Run YouTube Tests
+    runs-on: self-hosted
+    needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Restore packages
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Run YouTube Tests
+        run: dotnet test --logger "console;verbosity=detailed"
+
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: TestReport-${{ github.run_number }}
+          path: Reports/TestReport.html
