@@ -1,45 +1,36 @@
-using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-
-namespace SpecFlowDemo.Utilities
+public static IWebDriver GetDriver()
 {
-    public class DriverManager
+    if (_driver == null)
     {
-        private static IWebDriver? _driver;
+        var options = new ChromeOptions();
+        options.AddArgument("--disable-blink-features=AutomationControlled");
+        options.AddExcludedArgument("enable-automation");
+        options.AddArgument("--disable-notifications");
+        options.AddUserProfilePreference("credentials_enable_service", false);
 
-        public static IWebDriver GetDriver()
+        // ✅ CI environment-la headless mode
+        if (Environment.GetEnvironmentVariable("CI") == "true")
         {
-            if (_driver == null)
-            {
-                var options = new ChromeOptions();
-                options.AddArgument("--start-maximized");
-                options.AddArgument("--disable-notifications");
-                options.AddArgument("--disable-popup-blocking");
-                options.AddUserProfilePreference("credentials_enable_service", false);
-                options.AddUserProfilePreference("profile.password_manager_enabled", false);
-
-                // Selenium 4.6+ auto-manages ChromeDriver — no version needed
-                _driver = new ChromeDriver(options);
-                _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-                _driver.Manage().Timeouts().PageLoad    = TimeSpan.FromSeconds(60);
-            }
-            return _driver;
+            options.AddArgument("--headless=new");
+            options.AddArgument("--no-sandbox");
+            options.AddArgument("--disable-dev-shm-usage");
+            options.AddArgument("--disable-gpu");
+            options.AddArgument("--window-size=1920,1080");
+            Console.WriteLine("[DRIVER] Headless mode — CI environment");
+        }
+        else
+        {
+            Console.WriteLine("[DRIVER] Normal mode — Local environment");
         }
 
-        public static void QuitDriver()
-        {
-            if (_driver != null)
-            {
-                _driver.Quit();
-                _driver.Dispose();
-                _driver = null;
-            }
-        }
+        string driverPath = Directory.GetCurrentDirectory();
+        var service = ChromeDriverService.CreateDefaultService(driverPath);
+        service.HideCommandPromptWindow = true;
 
-        public static bool IsDriverActive()
-        {
-            return _driver != null;
-        }
+        _driver = new ChromeDriver(service, options);
+        _driver.Manage().Window.Maximize();
+        _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+        _driver.Manage().Timeouts().PageLoad    = TimeSpan.FromSeconds(60);
     }
+    return _driver;
 }
