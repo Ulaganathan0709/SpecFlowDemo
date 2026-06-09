@@ -22,6 +22,24 @@ jobs:
         with:
           dotnet-version: '8.0'
 
+      - name: Get Chrome version
+        id: chrome-version
+        run: |
+          $version = (Get-Item "C:\Program Files\Google\Chrome\Application\chrome.exe").VersionInfo.FileVersion
+          echo "Chrome version: $version"
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Download matching ChromeDriver
+        run: |
+          $chromeVersion = "${{ steps.chrome-version.outputs.version }}"
+          $driverUrl = "https://storage.googleapis.com/chrome-for-testing-public/$chromeVersion/win64/chromedriver-win64.zip"
+          Write-Host "Downloading ChromeDriver $chromeVersion"
+          Invoke-WebRequest -Uri $driverUrl -OutFile "chromedriver.zip"
+          Expand-Archive -Path "chromedriver.zip" -DestinationPath "." -Force
+          Copy-Item ".\chromedriver-win64\chromedriver.exe" ".\bin\Debug\net8.0\chromedriver.exe" -Force
+          Copy-Item ".\chromedriver-win64\chromedriver.exe" ".\chromedriver.exe" -Force
+          Write-Host "ChromeDriver installed!"
+
       - name: Restore packages
         run: dotnet restore
 
