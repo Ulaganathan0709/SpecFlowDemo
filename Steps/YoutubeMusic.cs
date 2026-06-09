@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 using System.Threading;
 using NUnit.Framework;
@@ -207,24 +208,27 @@ namespace SpecFlowDemo.Steps
             Thread.Sleep(1000);
             Step("Browser minimized");
         }
-
         [Then(@"the browser should be closed")]
         public void ThenTheBrowserShouldBeClosed()
         {
             Step("Browser closing...");
             DateTime end = DateTime.Now;
+
             ReportManager.LogPass(
                 _scenarioContext.ScenarioInfo.Title,
                 _steps,
                 _scenarioStart,
                 end);
+
             ReportManager.Flush();
 
             Console.WriteLine();
             Console.WriteLine("=================================");
             Console.WriteLine("FINAL SUMMARY");
-            Console.WriteLine($"Status   : PASSED ✅");
-            Console.WriteLine($"End Time : {end}");
+            Console.WriteLine(
+                $"Scenario  : {_scenarioContext.ScenarioInfo.Title}");
+            Console.WriteLine($"Status    : PASSED ✅");
+            Console.WriteLine($"End Time  : {end}");
             Console.WriteLine("=================================");
 
             _driver.Quit();

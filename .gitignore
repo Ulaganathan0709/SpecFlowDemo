@@ -40,4 +40,6 @@ desktop.ini
 .nuget/
 
 # Logs
-*.log
+*.logtest.mp4
+chromedriver-win64/
+chromedriver.zip

@@ -17,6 +17,6 @@ Feature: YouTube Music Playback
 
   Examples:
     | songName                                    |
-    | raise of dragon tamil video song 4k         |
-    | pavazha Malli official song 4k              |
-    | Va va Nilava pidichi tharava                |
+    | onakka munthiri song                        |
+    | kokkara kokkara ko 4k                       |        
+    | oh baby girl                                |

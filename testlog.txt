@@ -1,0 +1,154 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SpecFlowFeatureFiles: Features\YoutubeMusic.feature
+  -> Using default config
+  SpecFlowGeneratedFiles: Features\YoutubeMusic.feature.cs
+  SpecFlowDemo -> C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\SpecFlowDemo.dll
+Test run for C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\SpecFlowDemo.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[RECORD] Γû╢ Started ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\Videos\Play songs and close browser after completion_20260609_114645.mp4
+[HOOK] Starting: Play songs and close browser after completion
+Given the user launches the browser
+[PASS] Browser launched ΓÇö ChromeDriver started
+-> done: YoutubeMusicSteps.GivenTheUserLaunchesTheBrowser() (1.9s)
+And the user navigates to YouTube
+[PASS] Navigated to https://www.youtube.com
+-> done: YoutubeMusicSteps.GivenTheUserNavigatesToYouTube() (3.1s)
+When the user searches for "Maari thara local 4k"
+[PASS] Searched for: Maari thara local 4k
+-> done: YoutubeMusicSteps.WhenTheUserSearchesFor("Maari thara local 4k") (2.5s)
+And the user opens the official song video
+[PASS] Opened video: Maari Thara Local 8K/4K Video Song | Maari | Dhanush | Anirudh Ravichander
+[PASS] Fullscreen enabled (f key)
+-> done: YoutubeMusicSteps.WhenTheUserOpensTheOfficialSongVideo() (9.4s)
+Then the video should start playing
+[PASS] Ad detected and skipped
+[PASS] Video playing confirmed: True
+-> done: YoutubeMusicSteps.ThenTheVideoShouldStartPlaying() (6.3s)
+And the video should complete playback
+[PASS] Total duration: 00:03:20
+[INFO] Progress ΓåÆ Played: 00:00:00 | Remaining: 00:03:20
+[INFO] Progress ΓåÆ Played: 00:01:00 | Remaining: 00:02:19
+[INFO] Progress ΓåÆ Played: 00:02:00 | Remaining: 00:01:19
+[INFO] Progress ΓåÆ Played: 00:03:00 | Remaining: 00:00:19
+[PASS] Song completed successfully Γ£ô
+-> done: YoutubeMusicSteps.ThenTheVideoShouldCompletePlayback() (199.1s)
+Then the video should be paused
+[PASS] Video paused + Fullscreen exited
+-> done: YoutubeMusicSteps.ThenTheVideoShouldBePaused() (2.9s)
+And the browser should be minimized
+[PASS] Browser minimized
+-> done: YoutubeMusicSteps.ThenTheBrowserShouldBeMinimized() (1.8s)
+And the browser should be closed
+[PASS] Browser closing...
+[REPORT] ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\TestReport.html
+
+=================================
+FINAL SUMMARY
+Status   : PASSED Γ£à
+End Time : 6/9/2026 11:50:33 AM
+=================================
+-> done: YoutubeMusicSteps.ThenTheBrowserShouldBeClosed() (0.7s)
+[RECORD] ΓÅ╣ Stopping...
+[RECORD] Γ£à Saved ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\Videos\Play songs and close browser after completion_20260609_114645.mp4 (68547KB)
+[RECORD] ≡ƒÄ₧ GIF ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\Videos\Play songs and close browser after completion_20260609_114645.gif (16770KB)
+
+[RECORD] Γû╢ Started ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\Videos\Play songs and close browser after completion_20260609_115157.mp4
+[HOOK] Starting: Play songs and close browser after completion
+Given the user launches the browser
+[PASS] Browser launched ΓÇö ChromeDriver started
+-> done: YoutubeMusicSteps.GivenTheUserLaunchesTheBrowser() (1.8s)
+And the user navigates to YouTube
+[PASS] Navigated to https://www.youtube.com
+-> done: YoutubeMusicSteps.GivenTheUserNavigatesToYouTube() (2.7s)
+When the user searches for "don'u don'u don'u"
+[PASS] Searched for: don'u don'u don'u
+-> done: YoutubeMusicSteps.WhenTheUserSearchesFor("don'u don'u don'u") (1.5s)
+And the user opens the official song video
+[PASS] Opened video: Maari - DonΓÇÖu DonΓÇÖu DonΓÇÖu Video | Dhanush, Kajal | Anirudh | Super Hit Song
+[PASS] Fullscreen enabled (f key)
+-> done: YoutubeMusicSteps.WhenTheUserOpensTheOfficialSongVideo() (8.3s)
+Then the video should start playing
+[PASS] Ad detected and skipped
+[PASS] Video playing confirmed: True
+-> done: YoutubeMusicSteps.ThenTheVideoShouldStartPlaying() (10.2s)
+And the video should complete playback
+[PASS] Total duration: 00:03:07
+[INFO] Progress ΓåÆ Played: 00:00:00 | Remaining: 00:03:07
+[INFO] Progress ΓåÆ Played: 00:01:00 | Remaining: 00:02:06
+[INFO] Progress ΓåÆ Played: 00:02:00 | Remaining: 00:01:06
+[INFO] Progress ΓåÆ Played: 00:03:00 | Remaining: 00:00:06
+[PASS] Song completed successfully Γ£ô
+-> done: YoutubeMusicSteps.ThenTheVideoShouldCompletePlayback() (185.6s)
+Then the video should be paused
+[PASS] Video paused + Fullscreen exited
+-> done: YoutubeMusicSteps.ThenTheVideoShouldBePaused() (4.3s)
+And the browser should be minimized
+[PASS] Browser minimized
+-> done: YoutubeMusicSteps.ThenTheBrowserShouldBeMinimized() (1.5s)
+And the browser should be closed
+[PASS] Browser closing...
+[REPORT] ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\TestReport.html
+
+=================================
+FINAL SUMMARY
+Status   : PASSED Γ£à
+End Time : 6/9/2026 11:55:34 AM
+=================================
+-> done: YoutubeMusicSteps.ThenTheBrowserShouldBeClosed() (0.8s)
+[RECORD] ΓÅ╣ Stopping...
+[RECORD] Γ£à Saved ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\Videos\Play songs and close browser after completion_20260609_115157.mp4 (43106KB)
+[RECORD] ≡ƒÄ₧ GIF ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\Videos\Play songs and close browser after completion_20260609_115157.gif (17506KB)
+
+[RECORD] Γû╢ Started ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\Videos\Play songs and close browser after completion_20260609_115650.mp4
+[HOOK] Starting: Play songs and close browser after completion
+Given the user launches the browser
+[PASS] Browser launched ΓÇö ChromeDriver started
+-> done: YoutubeMusicSteps.GivenTheUserLaunchesTheBrowser() (1.3s)
+And the user navigates to YouTube
+[PASS] Navigated to https://www.youtube.com
+-> done: YoutubeMusicSteps.GivenTheUserNavigatesToYouTube() (3.3s)
+When the user searches for "Thappa dhaan theriyum video song"
+[PASS] Searched for: Thappa dhaan theriyum video song
+-> done: YoutubeMusicSteps.WhenTheUserSearchesFor("Thappa dhaan ther...") (0.8s)
+And the user opens the official song video
+[PASS] Opened video: Maari - Thappa Dhaan Theriyum Video | Dhanush, Kajal Agarwal | Anirudh
+[PASS] Fullscreen enabled (f key)
+-> done: YoutubeMusicSteps.WhenTheUserOpensTheOfficialSongVideo() (8.5s)
+Then the video should start playing
+[PASS] Ad detected and skipped
+[PASS] Video playing confirmed: True
+-> done: YoutubeMusicSteps.ThenTheVideoShouldStartPlaying() (10.8s)
+And the video should complete playback
+[PASS] Total duration: 00:03:22
+[INFO] Progress ΓåÆ Played: 00:00:00 | Remaining: 00:03:22
+[INFO] Progress ΓåÆ Played: 00:01:00 | Remaining: 00:02:22
+[INFO] Progress ΓåÆ Played: 00:02:00 | Remaining: 00:01:22
+[INFO] Progress ΓåÆ Played: 00:03:00 | Remaining: 00:00:22
+[PASS] Song completed successfully Γ£ô
+-> done: YoutubeMusicSteps.ThenTheVideoShouldCompletePlayback() (201.0s)
+Then the video should be paused
+[PASS] Video paused + Fullscreen exited
+-> done: YoutubeMusicSteps.ThenTheVideoShouldBePaused() (3.2s)
+And the browser should be minimized
+[PASS] Browser minimized
+-> done: YoutubeMusicSteps.ThenTheBrowserShouldBeMinimized() (1.7s)
+And the browser should be closed
+[PASS] Browser closing...
+[REPORT] ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\TestReport.html
+
+=================================
+FINAL SUMMARY
+Status   : PASSED Γ£à
+End Time : 6/9/2026 12:00:42 PM
+=================================
+-> done: YoutubeMusicSteps.ThenTheBrowserShouldBeClosed() (0.8s)
+[RECORD] ΓÅ╣ Stopping...
+[RECORD] Γ£à Saved ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\Videos\Play songs and close browser after completion_20260609_115650.mp4 (71023KB)
+[RECORD] ≡ƒÄ₧ GIF ΓåÆ C:\Users\ulaga\SpecFlowDemo\bin\Debug\net8.0\..\..\..\Reports\Videos\Play songs and close browser after completion_20260609_115650.gif (18315KB)
+
+
+Passed!  - Failed:     0, Passed:     3, Skipped:     0, Total:     3, Duration: 15 m 34 s - SpecFlowDemo.dll (net8.0)

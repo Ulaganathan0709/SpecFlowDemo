@@ -53,6 +53,11 @@ namespace SpecFlowDemo.Utilities
                 steps, screenshotPath, error));
         }
 
+        public static List<ScenarioResult> GetResults()
+        {
+            return _results;
+        }
+
         public static void Flush()
         {
             int pass  = _results.Count(r => r.Status == "PASSED");

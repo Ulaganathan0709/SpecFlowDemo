@@ -76,7 +76,9 @@ namespace SpecFlowDemo.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Play songs and close browser after completion")]
         [NUnit.Framework.CategoryAttribute("Youtube")]
-        [NUnit.Framework.TestCaseAttribute("pavazha Malli official song 4k", null)]
+        [NUnit.Framework.TestCaseAttribute("onakka munthiri song", null)]
+        [NUnit.Framework.TestCaseAttribute("kokkara kokkara ko 4k", null)]
+        [NUnit.Framework.TestCaseAttribute("oh baby girl", null)]
         public void PlaySongsAndCloseBrowserAfterCompletion(string songName, string[] exampleTags)
         {
             string[] @__tags = new string[] {

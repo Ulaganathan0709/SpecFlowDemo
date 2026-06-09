@@ -15,11 +15,11 @@ namespace SpecFlowDemo.Utilities
                 var options = new ChromeOptions();
                 options.AddArgument("--start-maximized");
                 options.AddArgument("--disable-notifications");
-                options.AddArgument("--disable-blink-features=AutomationControlled");
-                options.AddExcludedArgument("enable-automation");
+                options.AddArgument("--disable-popup-blocking");
                 options.AddUserProfilePreference("credentials_enable_service", false);
                 options.AddUserProfilePreference("profile.password_manager_enabled", false);
 
+                // Selenium 4.6+ auto-manages ChromeDriver — no version needed
                 _driver = new ChromeDriver(options);
                 _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                 _driver.Manage().Timeouts().PageLoad    = TimeSpan.FromSeconds(60);
