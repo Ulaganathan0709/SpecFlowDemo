@@ -33,6 +33,4 @@ jobs:
         if: always()
         with:
           name: TestReport-${{ github.run_number }}
-          path: |
-            Reports/TestReport.html
-            TestResults/
+          path: Reports/TestReport.html
