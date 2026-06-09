@@ -12,6 +12,13 @@ namespace SpecFlowDemo.Utilities
 
         public static void StartRecording(string scenarioName)
         {
+            // ✅ CI mode — skip recording
+            if (Environment.GetEnvironmentVariable("CI") == "true")
+            {
+                Console.WriteLine("[RECORD] CI mode — recording skipped");
+                return;
+            }
+
             try
             {
                 string safeName = string.Join("_",
@@ -29,15 +36,15 @@ namespace SpecFlowDemo.Utilities
 
                 var startInfo = new ProcessStartInfo
                 {
-                    FileName               = "ffmpeg",
-                    Arguments =
-                    $"-y -f gdigrab -framerate 10 " +  // 20 → 10
-                    $"-draw_mouse 1 -i desktop " +
-                    $"-c:v libx264 -preset ultrafast " +
-                    $"-crf 35 " +                       // 28 → 35 (smaller file)
-                    $"-pix_fmt yuv420p " +
-                    $"-movflags +faststart " +
-                    $"\"{_outputPath}\"",
+                    FileName          = "ffmpeg",
+                    Arguments         =
+                        $"-y -f gdigrab -framerate 10 " +
+                        $"-draw_mouse 1 -i desktop " +
+                        $"-c:v libx264 -preset ultrafast " +
+                        $"-crf 35 " +
+                        $"-pix_fmt yuv420p " +
+                        $"-movflags +faststart " +
+                        $"\"{_outputPath}\"",
                     UseShellExecute        = false,
                     CreateNoWindow         = true,
                     RedirectStandardInput  = true,
@@ -50,11 +57,9 @@ namespace SpecFlowDemo.Utilities
                     StartInfo = startInfo
                 };
                 _ffmpegProcess.Start();
-
-                // Drain stderr — without this FFmpeg blocks
                 _ffmpegProcess.BeginErrorReadLine();
 
-                Thread.Sleep(1000); // Wait for FFmpeg to init
+                Thread.Sleep(1000);
                 Console.WriteLine(
                     $"[RECORD] ▶ Started → {_outputPath}");
             }
@@ -67,6 +72,10 @@ namespace SpecFlowDemo.Utilities
 
         public static string? StopRecording()
         {
+            // ✅ CI mode — skip
+            if (Environment.GetEnvironmentVariable("CI") == "true")
+                return null;
+
             if (_ffmpegProcess == null || _ffmpegProcess.HasExited)
                 return _outputPath;
 
@@ -74,17 +83,14 @@ namespace SpecFlowDemo.Utilities
             {
                 Console.WriteLine("[RECORD] ⏹ Stopping...");
 
-                // Send 'q' — graceful FFmpeg stop
                 _ffmpegProcess.StandardInput.Write("q");
                 _ffmpegProcess.StandardInput.Flush();
 
-                // Wait max 10 seconds for clean exit
                 bool exited = _ffmpegProcess.WaitForExit(10000);
 
                 if (!exited)
                 {
-                    Console.WriteLine(
-                        "[RECORD] Force killing FFmpeg...");
+                    Console.WriteLine("[RECORD] Force killing FFmpeg...");
                     _ffmpegProcess.Kill();
                     _ffmpegProcess.WaitForExit(3000);
                 }
@@ -92,7 +98,7 @@ namespace SpecFlowDemo.Utilities
                 _ffmpegProcess.Dispose();
                 _ffmpegProcess = null;
 
-                Thread.Sleep(500); // Wait for file write
+                Thread.Sleep(500);
 
                 if (File.Exists(_outputPath))
                 {
@@ -115,8 +121,13 @@ namespace SpecFlowDemo.Utilities
                 return null;
             }
         }
+
         public static string? ConvertToGif(string? mp4Path)
         {
+            // ✅ CI mode — skip
+            if (Environment.GetEnvironmentVariable("CI") == "true")
+                return null;
+
             if (mp4Path == null || !File.Exists(mp4Path))
                 return null;
 
@@ -124,13 +135,12 @@ namespace SpecFlowDemo.Utilities
             {
                 string gifPath = mp4Path.Replace(".mp4", ".gif");
 
-                // Take only first 30 seconds for GIF
                 var startInfo = new ProcessStartInfo
                 {
-                    FileName              = "ffmpeg",
-                    Arguments             =
+                    FileName          = "ffmpeg",
+                    Arguments         =
                         $"-y -i \"{mp4Path}\" " +
-                        $"-t 30 " +                    // First 30 sec only
+                        $"-t 30 " +
                         $"-vf \"fps=5,scale=800:-1:flags=lanczos," +
                         $"split[s0][s1];[s0]palettegen[p];" +
                         $"[s1][p]paletteuse\" " +
@@ -161,7 +171,8 @@ namespace SpecFlowDemo.Utilities
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[RECORD] ⚠ GIF error: {ex.Message}");
+                Console.WriteLine(
+                    $"[RECORD] ⚠ GIF error: {ex.Message}");
             }
             return null;
         }
